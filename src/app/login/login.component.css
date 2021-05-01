@@ -1,0 +1,10 @@
+#ui {
+    background-color:rgb(63, 64, 66); 
+    padding: 100px;
+    margin-top: 100px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+#ui label {
+    color: azure
+}

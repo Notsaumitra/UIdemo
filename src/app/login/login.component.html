@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-md-4 col-sm-4 col-xs-12"></div>
+    <div class="col-md-4 col-sm-4 col-xs-12">
+        <div id="ui">
+            <form [formGroup]="register" (ngSubmit)="onSubmit(register)">
+                <div class="form-group">
+                    <h2 class="text-center" style="color:white">Login Here</h2><br>
+                    <label  style="color:white">Email Address</label>
+                    <input type="email" class="form-control" placeholder="Enter your email" formControlName="email">
+                    <span class="error" *ngIf="email.invalid && email.touched" class="text-danger">Please enter the email</span>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label style="color:white">Password</label>
+                    <input type="password" class="form-control" placeholder="Enter your email" formControlName="password">
+                    <span class="error" *ngIf="password.invalid && password.touched" class="text-danger">Please enter the password</span>
+                </div>
+                <br>
+                
+                <button type="submit" class="btn btn-info btn-block" style=" margin-left:50px">login</button> 
+            </form>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4 col-xs-12"></div>
+</div>
