@@ -41,7 +41,7 @@ function verifyToken(req,res,next){
 }
 
 router.get('/',(req,res)=>{
-    res.send('From API route')
+    res.send('Ironman Demo')
 })
 
 router.get('/special',verifyToken,(req,res)=>{

@@ -1,4 +1,71 @@
+<div class="page-wrapper bg-gra-02 p-t-10 p-b-100 font-poppins">
+    <div class="wrapper wrapper--w680">
+        <div class="card card-4">
+            <div class="card-body">
+                <h2 class="title">Registration Form</h2>
+                <form [formGroup]="register">
+                    <div class="row row-space">
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">first name</label>
+                                <input class="input--style-4" type="text"
+                                formControlName="fname">
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">last name</label>
+                                <input class="input--style-4" type="text" formControlName="lname">
+                            </div>
+                        </div>
+                    </div>
+                        <div class="col-12">
+                            <div class="input-group">
+                                <label class="label">Email</label>
+                                <input class="input--style-4" type="email"
+                                formControlName="email" >
+                                <div *ngIf="email.invalid && email.touched">
+                                    <small *ngIf="email.errors?.required" class="text-danger"
+                                        [class.d-none]="email.valid || email.untouched">Email is required</small>
+                                    <small *ngIf="email.errors?.pattern" class="text-danger"
+                                        [class.d-none]="email.valid || email.untouched">Email must be of form
+                                        abc@xyz.com</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="input-group">
+                                <label class="label">Password</label>
+                                <input class="input--style-4" type="password" formControlName="pass">
+                                <div *ngIf="pass.invalid && pass.touched">
+                                    <small *ngIf="pass.errors?.required" class="text-danger"
+                                        [class.d-none]="pass.valid || pass.untouched">Password is required</small>
+                                    <small *ngIf="pass.errors?.minlength" class="text-danger"
+                                        [class.d-none]="pass.valid || pass.untouched">Password must be atleast 4 characters long</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="input-group">
+                                <label class="label">Confirm Password</label>
+                                <input class="input--style-4" type="password" formControlName="cpass">
+                    
+                                    <small *ngIf="cpass.errors?.mismatch" class="text-danger"
+                                    >Passwords do not match</small>
+                            </div>
+                        </div>
 
+                    
+                    <div class="p-t-15">
+                        <button class="btn btn--radius-2 btn--blue" type="submit">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 

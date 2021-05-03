@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { AuthserviceService } from '../authservice.service';
+import { PasswordValidator } from './passwordValidator';
 
 @Component({
   selector: 'app-registration',
@@ -14,13 +15,15 @@ export class RegistrationComponent {
 
   
   register:any=this.fb.group({
-    fname:['',[Validators.required,Validators.minLength(3)]],
+    fname:['',Validators.required],
     lname:['',Validators.required],
-    email:['',[Validators.required,Validators.email]],
-    pass:['',Validators.required],
-    cpass:['',Validators.required]
+    email:['',[Validators.required,Validators.pattern('^([a-zA-Z0-9\.-]+)@([a-zA-Z0-9]{3,9})\.([a-z]{2,5})$')]],
+    pass:['',[Validators.required,Validators.minLength(4)]],
+    cpass:['',[Validators.required,Validators.minLength(4)]]
 
-  })
+  },{Validator: PasswordValidator})
+
+  
 
   get fname(){
     return this.register.get('fname');
