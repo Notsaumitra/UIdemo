@@ -1,0 +1,42 @@
+<div class="container-fluid" style="background: linear-gradient(to bottom, #9784c0, #4c13eb); ">
+    <div class="container-fluid pt-2">
+        <div class="row d-flex justify-content-center">
+            <div class="col-5 mt-4 mb-5">
+                <div class="card" style="background: linear-gradient(to bottom, #c2c5e0, #c7c5ca);">
+                    <div class="row card-body">
+                        <div class="col-12">
+                            <h2 class="d-flex justify-content-center">Forget Password</h2>
+                            <p class="d-flex justify-content-center">We will send a link to your registered Email</p>
+                            <form [formGroup]="register" (ngSubmit)="onSubmit(register)">
+
+                                <div class="form-group p-2 mt-4">
+                                    <label for="email2">Email</label>
+                                    <input [class.is-invalid]="email.invalid && email.touched" formControlName="email"
+                                        type="text" class="form-control" id="email2">
+                                    <div *ngIf="email.invalid && email.touched">
+                                        <small *ngIf="email.errors?.required" class="text-danger"
+                                            [class.d-none]="email.valid || email.untouched">Email is
+                                            required</small>
+                                        <small *ngIf="email.errors?.pattern" class="text-danger"
+                                            [class.d-none]="email.valid || email.untouched">Email must be of form
+                                            abc@xyz.com</small>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group mt-3 p-2 mb-3 ">
+                                    <button type="submit" class="btn btn-dark">Send Link</button>&nbsp;&nbsp;
+
+
+
+                                </div>
+
+
+                                <small class="d-flex justify-content-center">❤ Created by Ironman Team</small>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>

@@ -9,6 +9,7 @@ import { AuthserviceService } from '../authservice.service';
 })
 export class SpecialEventsComponent implements OnInit {
   message:any;
+  errMsg:any;
 
   constructor(private auth:AuthserviceService,
     private route:Router) { }
@@ -17,7 +18,7 @@ export class SpecialEventsComponent implements OnInit {
     this.auth.getVerified()
     .subscribe(
       res=>this.message=res,
-      err=>console.log(err)
+      err=>this.errMsg=err
     )
 
   }

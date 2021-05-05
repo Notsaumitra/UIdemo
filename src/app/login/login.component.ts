@@ -21,14 +21,14 @@ export class LoginComponent implements OnInit {
     return this.register.get('email');
   }
 
-  get password() {
-    return this.register.get('password');
+  get pass() {
+    return this.register.get('pass');
   }
 
   ngOnInit() {
     this.register = this.fb.group({
       email: ['', [Validators.required,Validators.pattern('^([a-zA-Z0-9\.-]+)@([a-zA-Z0-9]{3,9})\.([a-z]{2,5})$')]],
-      password: ['', Validators.required],
+      pass: ['', [Validators.required,Validators.minLength(4)]],
     })
   }
 

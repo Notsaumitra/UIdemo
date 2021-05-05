@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { EventsComponent } from './events/events.component';
+import { ForgetPassComponent } from './forget-pass/forget-pass.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { SpecialEventsComponent } from './special-events/special-events.component';
@@ -27,7 +28,12 @@ const routes: Routes = [{
 {
   path:'registration',
   component:RegistrationComponent
-}];
+},
+{
+  path:'forget',
+  component:ForgetPassComponent
+}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

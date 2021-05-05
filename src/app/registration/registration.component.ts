@@ -1,5 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthserviceService } from '../authservice.service';
 import { PasswordValidator } from './passwordValidator';
 
@@ -10,18 +12,15 @@ import { PasswordValidator } from './passwordValidator';
 })
 export class RegistrationComponent {
 
-  constructor(private fb:FormBuilder,private auth:AuthserviceService) { }
-
-
-  
+  constructor(private fb:FormBuilder,private auth:AuthserviceService, private route: Router) { }  
   register:any=this.fb.group({
     fname:['',Validators.required],
     lname:['',Validators.required],
     email:['',[Validators.required,Validators.pattern('^([a-zA-Z0-9\.-]+)@([a-zA-Z0-9]{3,9})\.([a-z]{2,5})$')]],
     pass:['',[Validators.required,Validators.minLength(4)]],
-    cpass:['',[Validators.required,Validators.minLength(4)]]
+    cpass:['',[Validators.required]]
 
-  },{Validator: PasswordValidator})
+  },{validator: PasswordValidator})
 
   
 
@@ -40,7 +39,22 @@ export class RegistrationComponent {
   }
   get cpass(){
     return this.register.get('cpass');
-    
+  }
+
+  onSubmit(register) {
+    //console.log(register.value);
+    this.auth.registerUser(this.register.value)
+      .subscribe(
+        res => {console.log(res)
+        },
+        err =>  {
+          if( err instanceof HttpErrorResponse ) {
+            if (err.status === 401) {
+              this.route.navigate(['/registration'])
+            }
+          }
+        }
+      )
   }
   
 }
